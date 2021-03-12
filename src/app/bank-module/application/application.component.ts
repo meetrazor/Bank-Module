@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild, Renderer2, AfterViewInit, OnChanges, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router, RouterLinkWithHref } from '@angular/router';
@@ -36,10 +37,24 @@ export class ApplicationComponent implements OnInit, AfterViewInit, OnDestroy {
   allLoanTypes = ['Personal Loan', 'Auto Loan', 'Home Loan', 'Business Loan', 'MSME Loan', 'Industrial Loan', 'Mudra Loan'];
   allStatus = ['iPVR sent', 'iPVR in Progress'];
   allApplicationNos = ['1', '2', '3', '4', '5', '6'];
+  allProperty: any
   tabledata: any;
+  countData: any;
+  isFilterLoading: boolean;
+  filterobj: {
+    FilterStartDate: string,
+    FilterEndDate: string,
+    TypeOfLoan: number,
+    LoanPropertyTypeID: number,
+    ApplicationStatus: string,
+    UserID: string,
+    CompanyUserMasterID: string
+  }
   constructor(
     private router: Router, private service: GeneralService, private renderer: Renderer2,
-    private formBuilder: FormBuilder, private modalService: NgbModal) { }
+    private formBuilder: FormBuilder, private modalService: NgbModal, private datePipe: DatePipe) {
+
+  }
 
   ngOnInit() {
     this.isLoading = false;
@@ -49,6 +64,25 @@ export class ApplicationComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currentUser = this.service.getcurrentUser();
     this.selected = '7/1/2020-7/8/2020';
     this.hidden = true;
+    this.filterobj = {
+      FilterStartDate: "",
+      FilterEndDate: "",
+      TypeOfLoan: null,
+      LoanPropertyTypeID: null,
+      ApplicationStatus: "",
+      UserID: this.currentUser.UserID,
+      CompanyUserMasterID: this.currentUser.CompanyUserMasterID
+    }
+    this.isFilterLoading = true;
+    this.service.GetLoanPropertyTypes().subscribe((res) => {
+      this.allProperty = res.data;
+      this.service.GetLoanTypes().subscribe((data) => {
+        this.allLoanTypes = data.data;
+        this.isFilterLoading = false;
+        this.filterCount();
+      })
+    })
+
     this.dtOptions = {
       ajax: { url: this.service.GetBaseUrl() + `loan/application/View/BankManager/${this.currentUser.UserID}` }, responsive: true,
       columns: [{
@@ -189,8 +223,11 @@ export class ApplicationComponent implements OnInit, AfterViewInit, OnDestroy {
       ], order: [[0, 'desc']], columnDefs: [{ targets: 0, visible: false }]
     };
     // this.tabledata = data;
+
   }
   onDateSelection(date: NgbDate) {
+    this.filterobj.FilterStartDate = '';
+    this.filterobj.FilterEndDate = '';
     if (!this.fromDate && !this.toDate) {
       this.fromNGDate = date;
       this.fromDate = new Date(date.year, date.month - 1, date.day);
@@ -200,14 +237,14 @@ export class ApplicationComponent implements OnInit, AfterViewInit, OnDestroy {
       this.toDate = new Date(date.year, date.month - 1, date.day);
       this.hidden = true;
       this.selected = this.fromDate.toLocaleDateString() + '-' + this.toDate.toLocaleDateString();
-
+      this.filterobj.FilterStartDate = this.datePipe.transform(this.fromDate, 'yyyy-MM-dd');
+      this.filterobj.FilterEndDate = this.datePipe.transform(this.toDate, 'yyyy-MM-dd');
       this.dateRangeSelected.emit({ fromDate: this.fromDate, toDate: this.toDate });
-
       this.fromDate = null;
       this.toDate = null;
       this.fromNGDate = null;
       this.toNGDate = null;
-
+      this.filterCount();
     } else {
       this.fromNGDate = date;
       this.fromDate = new Date(date.year, date.month - 1, date.day);
@@ -400,6 +437,44 @@ export class ApplicationComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   ngOnDestroy() {
     this.renderer.destroy()
+  }
+  filterCount() {
+    this.isFilterLoading = true;
+    this.service.getLoanDashboard(this.filterobj).subscribe((res) => {
+      this.countData = res.data;
+      this.isFilterLoading = false;
+    });
+  }
+  callback() {
+    this.selected = ''
+    this.filterobj.FilterStartDate = '';
+    this.filterobj.FilterEndDate = '';
+    this.filterCount()
+    this.hidden = true;
+  }
+  ChangeLoan(e) {
+    if (e === undefined) {
+      this.filterobj.TypeOfLoan = null
+    } else {
+      this.filterobj.TypeOfLoan = e
+    }
+    this.filterCount()
+  }
+  onstatusChange(e) {
+    if (e === undefined) {
+      this.filterobj.ApplicationStatus = null
+    } else {
+      this.filterobj.ApplicationStatus = e
+    }
+    this.filterCount()
+  }
+  ChangePropertyType(e) {
+    if (e === undefined) {
+      this.filterobj.LoanPropertyTypeID = null
+    } else {
+      this.filterobj.LoanPropertyTypeID = e
+    }
+    this.filterCount()
   }
 }
 

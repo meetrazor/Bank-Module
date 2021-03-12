@@ -5,7 +5,7 @@
 
 # dependencies
 /node_modules
-
+/.svn
 # IDEs and editors
 /.idea
 .project
