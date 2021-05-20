@@ -22,6 +22,7 @@ const httpFileUploadOptions = {
 // const baseurl = `https://api.proplegit.com/`;
 // const baseurl = `http://devapi.proplegit.com/`;
 const baseurl = `https://qaapi.proplegit.com/`;
+
 const apiUrl = `${baseurl}api/`;
 const register = `${apiUrl}login/register`;
 const generateOTP = `${apiUrl}generate/otp/`;
@@ -207,6 +208,14 @@ export class GeneralService {
   Addphotograph(PropertyID, data): any {
     return this.http.post(
       `${apiUrl}property/${PropertyID}/document/add`,
+      data,
+      httpFileUploadOptions,
+    );
+  }
+
+  AddMultiplePropertyDocument(PropertyID, data): any {
+    return this.http.post(
+      `${apiUrl}loan/property/${PropertyID}/document/multiple/upload`,
       data,
       httpFileUploadOptions,
     );

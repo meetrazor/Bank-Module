@@ -36,12 +36,12 @@ export class PvrReportComponent implements OnInit {
         OwnerCoOwnersName: this.Fb.array([
           this.initOwner()
         ]),
-        EncumbranceDetails: this.Fb.array([
-          this.initEncumbranceDetails()
-        ]),
-        CropDetails: this.Fb.array([
-          this.initCropDetails()
-        ]),
+        // EncumbranceDetails: this.Fb.array([
+        //   this.initEncumbranceDetails()
+        // ]),
+        // CropDetails: this.Fb.array([
+        //   this.initCropDetails()
+        // ]),
         TotalLandSize: new FormControl('', Validators.required),
         PVRRiskMeterStatus: new FormControl('', Validators.required),
         OwnerRemarks: new FormControl('', Validators.required),

@@ -62,41 +62,42 @@ export class BulkUploadComponent implements OnInit {
             this.ResponseData.push(err)
           })
           this.isLoading = false;
-          Swal.fire({
-            title: 'File Uploaded Successfully',
-            text: 'File Uploaded Successfully , Want to see Log?',
-            type: 'success',
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'No',
-            confirmButtonClass: 'btn btn-success mt-2',
-            cancelButtonClass: 'btn btn-success ml-2 mt-2',
-            buttonsStyling: false
-          }).then((result) => {
-            if (result.value) {
-              return
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-              Swal.fire({
-                title: 'Upload Another Excel ?',
-                text: 'Want To Upload Another Excel?',
-                type: 'info',
-                showCancelButton: true,
-                confirmButtonText: 'Yes',
-                cancelButtonText: 'No',
-                confirmButtonClass: 'btn btn-success mt-2',
-                cancelButtonClass: 'btn btn-success ml-2 mt-2',
-                buttonsStyling: false
-              }).then((result) => {
-                if (result.value) {
-                  location.reload();
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                  this.router.navigate(['loan/applications']);
-                }
-              });
-            }
-          });
-          // new UploadData(rows[index], this.currentUser.UserID, this.service).getdata()
         }
+        Swal.fire({
+          title: 'File Uploaded Successfully',
+          text: 'File Uploaded Successfully , Want to see Log?',
+          type: 'success',
+          showCancelButton: true,
+          confirmButtonText: 'Yes',
+          cancelButtonText: 'No',
+          confirmButtonClass: 'btn btn-success mt-2',
+          cancelButtonClass: 'btn btn-success ml-2 mt-2',
+          buttonsStyling: false
+        }).then((result) => {
+          if (result.value) {
+            return
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire({
+              title: 'Upload Another Excel ?',
+              text: 'Want To Upload Another Excel?',
+              type: 'info',
+              showCancelButton: true,
+              confirmButtonText: 'Yes',
+              cancelButtonText: 'No',
+              confirmButtonClass: 'btn btn-success mt-2',
+              cancelButtonClass: 'btn btn-success ml-2 mt-2',
+              buttonsStyling: false
+            }).then((result) => {
+              if (result.value) {
+                location.reload();
+              } else if (result.dismiss === Swal.DismissReason.cancel) {
+                this.router.navigate(['loan/applications']);
+              }
+            });
+          }
+        });
+        // new UploadData(rows[index], this.currentUser.UserID, this.service).getdata()
+        // }
       }
     })
   }

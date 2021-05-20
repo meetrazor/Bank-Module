@@ -1,29 +1,22 @@
 <div class="container-fluid pb-5">
   <!-- start page title -->
-  <app-page-title
-    title="Add PVR Report"
-    [breadcrumbItems]="breadCrumbItems"
-  ></app-page-title>
+  <app-page-title title="Add iPVR Report" [breadcrumbItems]="breadCrumbItems"></app-page-title>
   <div class="card" *ngIf="!isLoading">
     <div class="card-body">
       <div class="row">
         <div class="col-12">
-          <app-portlet
-            loading="0"
-            title="Application Information"
-            color="light"
-            collapsed="0"
-            headerClass="title header-title "
-            ><div class="row">
+          <app-portlet loading="0" title="Application Information" color="light" collapsed="0"
+            headerClass="title header-title ">
+            <div class="row">
               <div class="col-md-4">
                 <table class="table table-borderless hover">
                   <tr>
                     <th>Application Number</th>
                     <td>
                       {{
-                        applicationData.ApplicationID
-                          ? applicationData.ApplicationID
-                          : "-"
+                      applicationData.ApplicationID
+                      ? applicationData.ApplicationID
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -31,11 +24,11 @@
                     <th>Applicant Name</th>
                     <td>
                       {{
-                        applicationData.FirstName && applicationData.LastName
-                          ? applicationData.FirstName +
-                            " " +
-                            applicationData.LastName
-                          : "-"
+                      applicationData.FirstName && applicationData.LastName
+                      ? applicationData.FirstName +
+                      " " +
+                      applicationData.LastName
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -43,9 +36,9 @@
                     <th>Email Address</th>
                     <td>
                       {{
-                        applicationData.EmailAddress
-                          ? applicationData.EmailAddress
-                          : "-"
+                      applicationData.EmailAddress
+                      ? applicationData.EmailAddress
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -53,9 +46,9 @@
                     <th>Mobile Number</th>
                     <td>
                       {{
-                        applicationData.MobileNumber
-                          ? applicationData.MobileNumber
-                          : "-"
+                      applicationData.MobileNumber
+                      ? applicationData.MobileNumber
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -63,9 +56,9 @@
                     <th>Application Status</th>
                     <td>
                       {{
-                        applicationData.ApplicationStatus
-                          ? applicationData.ApplicationStatus
-                          : "-"
+                      applicationData.ApplicationStatus
+                      ? applicationData.ApplicationStatus
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -73,9 +66,9 @@
                     <th>Bank Name</th>
                     <td>
                       {{
-                        applicationData.BankName
-                          ? applicationData.BankName
-                          : "-"
+                      applicationData.BankName
+                      ? applicationData.BankName
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -83,9 +76,9 @@
                     <th>Branch Name</th>
                     <td>
                       {{
-                        applicationData.BranchCode
-                          ? applicationData.BranchCode
-                          : "-"
+                      applicationData.BranchCode
+                      ? applicationData.BranchCode
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -93,9 +86,9 @@
                     <th>Loan Amount</th>
                     <td>
                       {{
-                        applicationData.LoanAmount
-                          ? applicationData.LoanAmount
-                          : "-"
+                      applicationData.LoanAmount
+                      ? applicationData.LoanAmount
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -103,9 +96,9 @@
                     <th>Type of Loan</th>
                     <td>
                       {{
-                        applicationData.Type_of_Loan
-                          ? applicationData.Type_of_Loan
-                          : "-"
+                      applicationData.Type_of_Loan
+                      ? applicationData.Type_of_Loan
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -117,9 +110,9 @@
                     <th>District</th>
                     <td>
                       {{
-                        applicationData.DistrictName
-                          ? applicationData.DistrictName
-                          : "-"
+                      applicationData.DistrictName
+                      ? applicationData.DistrictName
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -127,9 +120,9 @@
                     <th>Taluka</th>
                     <td>
                       {{
-                        applicationData.TalukaName
-                          ? applicationData.TalukaName
-                          : "-"
+                      applicationData.TalukaName
+                      ? applicationData.TalukaName
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -137,9 +130,9 @@
                     <th>Village</th>
                     <td>
                       {{
-                        applicationData.VillageName
-                          ? applicationData.VillageName
-                          : "-"
+                      applicationData.VillageName
+                      ? applicationData.VillageName
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -147,9 +140,9 @@
                     <th>Survey No</th>
                     <td>
                       {{
-                        applicationData.SurveyNo
-                          ? applicationData.SurveyNo
-                          : "-"
+                      applicationData.SurveyNo
+                      ? applicationData.SurveyNo
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -157,9 +150,9 @@
                     <th>City Survey No</th>
                     <td>
                       {{
-                        applicationData.CitySurveyNumber
-                          ? applicationData.CitySurveyNumber
-                          : "-"
+                      applicationData.CitySurveyNumber
+                      ? applicationData.CitySurveyNumber
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -179,9 +172,9 @@
                     <th>Loan Property Type</th>
                     <td>
                       {{
-                        applicationData.Loan_Property_Type
-                          ? applicationData.Loan_Property_Type
-                          : "-"
+                      applicationData.Loan_Property_Type
+                      ? applicationData.Loan_Property_Type
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -189,9 +182,9 @@
                     <th>Postal Address</th>
                     <td>
                       {{
-                        applicationData.PostalAddress
-                          ? applicationData.PostalAddress
-                          : "-"
+                      applicationData.PostalAddress
+                      ? applicationData.PostalAddress
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -207,9 +200,9 @@
                     <th>Property Owner(s)</th>
                     <td>
                       {{
-                        applicationData.PropertyOwners.length > 0
-                          ? getusers()
-                          : "-"
+                      applicationData.PropertyOwners.length > 0
+                      ? getusers()
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -223,9 +216,9 @@
                     <th>Lien Person Name</th>
                     <td>
                       {{
-                        applicationData.LienPersonName
-                          ? applicationData.LienPersonName
-                          : "-"
+                      applicationData.LienPersonName
+                      ? applicationData.LienPersonName
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -233,9 +226,9 @@
                     <th>Lien Date</th>
                     <td>
                       {{
-                        applicationData.LienDate
-                          ? (applicationData.LienDate | date: "dd-MM-yyyy")
-                          : "-"
+                      applicationData.LienDate
+                      ? (applicationData.LienDate | date: "dd-MM-yyyy")
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -243,9 +236,9 @@
                     <th>LienFrom</th>
                     <td>
                       {{
-                        applicationData.LienFrom
-                          ? applicationData.LienFrom
-                          : "-"
+                      applicationData.LienFrom
+                      ? applicationData.LienFrom
+                      : "-"
                       }}
                     </td>
                   </tr>
@@ -257,24 +250,15 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <app-portlet
-            loading="0"
-            title="Upload Documents"
-            color="light"
-            collapsed="0"
-            headerClass="title header-title "
-            ><div>
+          <app-portlet loading="0" title="Upload Documents" color="light" collapsed="0"
+            headerClass="title header-title ">
+            <div>
               <app-upload-document [appid]="appID"></app-upload-document>
             </div>
           </app-portlet>
         </div>
       </div>
-      <form
-        [formGroup]="PVRForm"
-        novalidate
-        (ngSubmit)="save()"
-        (keydown.enter)="$event.preventDefault()"
-      >
+      <form [formGroup]="PVRForm" novalidate (ngSubmit)="save()" (keydown.enter)="$event.preventDefault()">
         <!-- <h5
           class="header-title mb-0"
           style="color: rgb(34, 30, 30); font-size: 18px"
@@ -661,72 +645,46 @@
             </a>
           </div>
         </div> -->
-        <h5
-          class="header-title mb-0"
-          style="color: rgb(34, 30, 30); font-size: 18px"
-        >
+        <h5 class="header-title mb-0" style="color: rgb(34, 30, 30); font-size: 18px">
           Owner/CoOwners Information
         </h5>
         <hr />
         <div formArrayName="OwnerCoOwnersName" class="mb-3">
           <div>
             <div class="form-row">
-              <div
-                class="form-group col-md-6"
-                *ngFor="
+              <div class="form-group col-md-6" *ngFor="
                   let Owner of PVRForm.controls.OwnerCoOwnersName['controls'];
                   let i = index
-                "
-                [formGroupName]="i"
-              >
+                " [formGroupName]="i">
                 <label>Owner Name*</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="OwnersName"
-                  maxlength="250"
-                  [ngClass]="{
+                <input type="text" class="form-control" formControlName="OwnersName" maxlength="250" [ngClass]="{
                     'is-invalid':
                       submitted &&
                       f.OwnerCoOwnersName['controls'][i]['controls'].OwnersName
                         .errors
-                  }"
-                  pattern="[a-zA-Z][a-zA-Z- ]+"
-                />
-                <div
-                  *ngIf="
+                  }" pattern="[a-zA-Z][a-zA-Z- ]+" />
+                <div *ngIf="
                     submitted &&
                     f.OwnerCoOwnersName['controls'][i]['controls'].OwnersName
                       .errors
-                  "
-                  class="invalid-feedback"
-                >
-                  <div
-                    *ngIf="
+                  " class="invalid-feedback">
+                  <div *ngIf="
                       f.OwnerCoOwnersName['controls'][i]['controls'].OwnersName
                         .errors.required
-                    "
-                  >
+                    ">
                     Owners Name is Required
                   </div>
-                  <div
-                    *ngIf="
+                  <div *ngIf="
                       f.OwnerCoOwnersName['controls'][i]['controls'].OwnersName
                         .errors.pattern
-                    "
-                  >
+                    ">
                     Only Alpha letters Allowed
                   </div>
                 </div>
                 <div class="form-group col-md-6">
-                  <span
-                    class="mdi mdi-account-remove"
-                    style="cursor: pointer; color: red"
-                    *ngIf="
+                  <span class="mdi mdi-account-remove" style="cursor: pointer; color: red" *ngIf="
                       PVRForm.controls.OwnerCoOwnersName['controls'].length > 1
-                    "
-                    (click)="removeOwnerDetails(i)"
-                  >
+                    " (click)="removeOwnerDetails(i)">
                   </span>
                 </div>
               </div>
@@ -740,29 +698,17 @@
             </a>
           </div>
         </div>
-        <h5
-          class="header-title mb-0"
-          style="color: rgb(34, 30, 30); font-size: 18px"
-        >
+        <h5 class="header-title mb-0" style="color: rgb(34, 30, 30); font-size: 18px">
           Property Status
         </h5>
         <hr />
         <div class="form-row">
           <div class="form-group col-md-4">
             <label>Total Land Size*</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="TotalLandSize"
-              maxlength="250"
-              [ngClass]="{
+            <input type="text" class="form-control" formControlName="TotalLandSize" maxlength="250" [ngClass]="{
                 'is-invalid': submitted && f.TotalLandSize.errors
-              }"
-            />
-            <div
-              *ngIf="submitted && f.TotalLandSize.errors"
-              class="invalid-feedback"
-            >
+              }" />
+            <div *ngIf="submitted && f.TotalLandSize.errors" class="invalid-feedback">
               <div *ngIf="f.TotalLandSize.errors.required">
                 Total Land Size is Required
               </div>
@@ -770,27 +716,13 @@
           </div>
           <div class="form-group col-md-4">
             <label>iPVR Status*</label>
-            <ng-select
-              class="form-control"
-              formControlName="PVRPropertyStatus"
-              autocomplete="off"
-              placeholder="
-          Select iPVR Status"
-              [ngClass]="{
+            <ng-select class="form-control" formControlName="PVRPropertyStatus" autocomplete="off" placeholder="
+          Select iPVR Status" [ngClass]="{
                 'is-invalid': submitted && f.PVRPropertyStatus.errors
-              }"
-            >
-              <ng-option
-                *ngFor="let item of PVRStatusList"
-                [value]="item"
-                [id]="item"
-                >{{ item }}</ng-option
-              >
+              }">
+              <ng-option *ngFor="let item of PVRStatusList" [value]="item" [id]="item">{{ item }}</ng-option>
             </ng-select>
-            <div
-              *ngIf="submitted && f.PVRPropertyStatus.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.PVRPropertyStatus.errors" class="invalid-feedback">
               <div *ngIf="f.PVRPropertyStatus.errors.required">
                 iPVR Status is Required
               </div>
@@ -798,58 +730,31 @@
           </div>
           <div class="form-group col-md-4">
             <label>Risk Meter*</label>
-            <ng-select
-              class="form-control"
-              formControlName="PVRRiskMeterStatus"
-              autocomplete="off"
-              placeholder="
-          Select Risk Meter"
-              [ngClass]="{
+            <ng-select class="form-control" formControlName="PVRRiskMeterStatus" autocomplete="off" placeholder="
+          Select Risk Meter" [ngClass]="{
                 'is-invalid': submitted && f.PVRRiskMeterStatus.errors
-              }"
-            >
-              <ng-option
-                *ngFor="let item of PVRRiskMeterList"
-                [value]="item"
-                [id]="item"
-                >{{ item }}</ng-option
-              >
+              }">
+              <ng-option *ngFor="let item of PVRRiskMeterList" [value]="item" [id]="item">{{ item }}</ng-option>
             </ng-select>
-            <div
-              *ngIf="submitted && f.PVRRiskMeterStatus.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.PVRRiskMeterStatus.errors" class="invalid-feedback">
               <div *ngIf="f.PVRRiskMeterStatus.errors.required">
                 iPVR Risk Meter Status is Required
               </div>
             </div>
           </div>
         </div>
-        <h5
-          class="header-title mb-0"
-          style="color: rgb(34, 30, 30); font-size: 18px"
-        >
+        <h5 class="header-title mb-0" style="color: rgb(34, 30, 30); font-size: 18px">
           Final Report
         </h5>
         <hr />
         <div class="form-row">
           <div class="form-group col-md-4">
             <label>Owner Remarks*</label>
-            <textarea
-              formControlName="OwnerRemarks"
-              class="form-control"
-              id="OwnerRemarks"
-              [ngClass]="{
+            <textarea formControlName="OwnerRemarks" class="form-control" id="OwnerRemarks" [ngClass]="{
                 'is-invalid': submitted && f.OwnerRemarks.errors
-              }"
-              cols="30"
-              rows="5"
-            ></textarea>
+              }" cols="30" rows="5"></textarea>
 
-            <div
-              *ngIf="submitted && f.OwnerRemarks.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.OwnerRemarks.errors" class="invalid-feedback">
               <div *ngIf="f.OwnerRemarks.errors.required">
                 Owner Remarks is Required
               </div>
@@ -857,21 +762,11 @@
           </div>
           <div class="form-group col-md-4">
             <label>Property Remarks*</label>
-            <textarea
-              formControlName="PropertyRemarks"
-              class="form-control"
-              id="PropertyRemarks"
-              [ngClass]="{
+            <textarea formControlName="PropertyRemarks" class="form-control" id="PropertyRemarks" [ngClass]="{
                 'is-invalid': submitted && f.PropertyRemarks.errors
-              }"
-              cols="30"
-              rows="5"
-            ></textarea>
+              }" cols="30" rows="5"></textarea>
 
-            <div
-              *ngIf="submitted && f.PropertyRemarks.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.PropertyRemarks.errors" class="invalid-feedback">
               <div *ngIf="f.PropertyRemarks.errors.required">
                 Property Remarks is Required
               </div>
@@ -879,21 +774,11 @@
           </div>
           <div class="form-group col-md-4">
             <label>Encumbrance Remarks*</label>
-            <textarea
-              formControlName="EncumbranceRemarks"
-              class="form-control"
-              id="EncumbranceRemarks"
-              [ngClass]="{
+            <textarea formControlName="EncumbranceRemarks" class="form-control" id="EncumbranceRemarks" [ngClass]="{
                 'is-invalid': submitted && f.EncumbranceRemarks.errors
-              }"
-              cols="30"
-              rows="5"
-            ></textarea>
+              }" cols="30" rows="5"></textarea>
 
-            <div
-              *ngIf="submitted && f.EncumbranceRemarks.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.EncumbranceRemarks.errors" class="invalid-feedback">
               <div *ngIf="f.EncumbranceRemarks.errors.required">
                 Encumbrance Remarks is Required
               </div>
@@ -903,21 +788,11 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Status Line 1*</label>
-            <textarea
-              formControlName="PVRStatusLine1"
-              class="form-control"
-              id="PVRStatusLine1"
-              [ngClass]="{
+            <textarea formControlName="PVRStatusLine1" class="form-control" id="PVRStatusLine1" [ngClass]="{
                 'is-invalid': submitted && f.PVRStatusLine1.errors
-              }"
-              cols="30"
-              rows="5"
-            ></textarea>
+              }" cols="30" rows="5"></textarea>
 
-            <div
-              *ngIf="submitted && f.PVRStatusLine1.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.PVRStatusLine1.errors" class="invalid-feedback">
               <div *ngIf="f.PVRStatusLine1.errors.required">
                 iPVR Status Line1 is Required
               </div>
@@ -925,21 +800,11 @@
           </div>
           <div class="form-group col-md-6">
             <label>Status Line 2*</label>
-            <textarea
-              formControlName="PVRStatusLine2"
-              class="form-control"
-              id="PVRStatusLine2"
-              [ngClass]="{
+            <textarea formControlName="PVRStatusLine2" class="form-control" id="PVRStatusLine2" [ngClass]="{
                 'is-invalid': submitted && f.PVRStatusLine2.errors
-              }"
-              cols="30"
-              rows="5"
-            ></textarea>
+              }" cols="30" rows="5"></textarea>
 
-            <div
-              *ngIf="submitted && f.PVRStatusLine2.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.PVRStatusLine2.errors" class="invalid-feedback">
               <div *ngIf="f.PVRStatusLine2.errors.required">
                 iPVR Status Line2 is Required
               </div>
@@ -947,15 +812,8 @@
           </div>
         </div>
         <div class="text-center mt-3">
-          <button
-            class="btn btn-primary waves-effect waves-light"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapseExample"
-            aria-expanded="true"
-            aria-controls="collapseExample"
-            type="submit"
-          >
+          <button class="btn btn-primary waves-effect waves-light" type="button" data-toggle="collapse"
+            data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample" type="submit">
             Add iPVR
           </button>
         </div>

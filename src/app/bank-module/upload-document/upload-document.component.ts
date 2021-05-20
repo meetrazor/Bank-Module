@@ -18,6 +18,8 @@ export class UploadDocumentComponent implements OnInit {
   applicationData: any;
   currentUser: any;
   DocumentList: Array<any>;
+  AllowMultiple: boolean = false;
+  fileToUpload: Array<any> = [];
   file: any;
   isLoading: boolean;
   submited: boolean;
@@ -29,7 +31,7 @@ export class UploadDocumentComponent implements OnInit {
       FileName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]),
       FileType: new FormControl('', Validators.required),
       Description: new FormControl(''),
-      uploadfile: new FormControl(null, Validators.required),
+      uploadfile: new FormControl(null, [Validators.required]),
       DocumentSubTypeId: new FormControl(null, Validators.required),
       UserID: new FormControl(this.currentUser.UserID, Validators.required),
       CreatedBy: new FormControl(this.currentUser.UserID, Validators.required),
@@ -77,14 +79,19 @@ export class UploadDocumentComponent implements OnInit {
 
   }
   private prepareSave(): any {
+
     const input = new FormData();
+
+    for (var i = 0; i < this.fileToUpload.length; i++) {
+      input.append("uploadfile", this.fileToUpload[i]);
+    }
     // This can be done a lot prettier; for example automatically assigning values by
     // looping through `this.form.controls`, but we'll keep it as simple as possible here
     input.append('FileName', this.photographForm.get('FileName').value + '.' + this.fileExtension);
     input.append('FileType', this.photographForm.get('FileType').value);
     input.append('Description', this.photographForm.get('Description').value);
     input.append('DocumentSubTypeId', this.photographForm.get('DocumentSubTypeId').value);
-    input.append('uploadfile', (this.photographForm.get('uploadfile').value)[0]);
+    // input.append('uploadfile', this.photographForm.get('uploadfile');
     input.append('UserID', (this.photographForm.get('UserID').value));
     input.append('CreatedBy', (this.photographForm.get('CreatedBy').value));
     input.append('DocumentTypeId', this.photographForm.get('DocumentTypeId').value);
@@ -93,8 +100,15 @@ export class UploadDocumentComponent implements OnInit {
   }
   get f() { return this.photographForm.controls; }
   onchange(e) {
+
+    // if (!this.AllowMultiple && e.length > 1) {
+    //   this.photographForm.controls.uploadfile.setErrors({
+    //     CustomeFileUploadError: true
+    //   })
+    // }
     if (e && e.length > 0) {
       const file = e[0];
+      this.fileToUpload = e;
       let fileName = file.name;
       fileName = fileName.replace(/\.[^/.]+$/, '').replace(/[^a-zA-Z0-9]/g, '');
       fileName = fileName.length > 25 ? fileName.substring(0, 25) : fileName;
@@ -130,7 +144,9 @@ export class UploadDocumentComponent implements OnInit {
       // 1 is Property ID
       this.isLoading = true;
 
-      this.generalService.Addphotograph(this.applicationData.PropertyID, this.prepareSave())
+      // if (this.AllowMultiple) {
+
+      this.generalService.AddMultiplePropertyDocument(this.applicationData.PropertyID, this.prepareSave())
         .subscribe(data => {
           this.isLoading = false;
           this.ResetForm();
@@ -138,7 +154,7 @@ export class UploadDocumentComponent implements OnInit {
             this.submited = false;
             Swal.fire({
               title: 'Uploaded',
-              text: 'Document Upload Successfully',
+              text: 'Property Document Upload Successfully',
               type: 'success'
             }).then(() => {
               if (this.currentUser.UserType === 'Bank Manager') {
@@ -155,9 +171,39 @@ export class UploadDocumentComponent implements OnInit {
             });
           }
         });
+      // } else {
+      //   this.generalService.Addphotograph(this.applicationData.PropertyID, this.prepareSave())
+      //     .subscribe(data => {
+      //       this.isLoading = false;
+      //       this.ResetForm();
+      //       if (data.status === 200) {
+      //         this.submited = false;
+      //         Swal.fire({
+      //           title: 'Uploaded',
+      //           text: 'Document Upload Successfully',
+      //           type: 'success'
+      //         }).then(() => {
+      //           if (this.currentUser.UserType === 'Bank Manager') {
+      //             this.router.navigate([`/loan/title-search/${this.route.snapshot.params.Appid}`]);
+      //           } else if (this.currentUser.UserType === 'Lawyer') {
+      //             this.router.navigate([`/loan/assignment/${this.route.snapshot.params.Appid}`]);
+      //           }
+      //         });
+      //       } else {
+      //         Swal.fire({
+      //           title: data.error_code,
+      //           text: data.message,
+      //           type: 'error'
+      //         });
+      //       }
+      //     });
+      // }
     }
   }
   Changedocument(e) {
+    this.AllowMultiple = false;
+    if (e.DocumentName === "Govt. certified copy of latest 7/12") this.AllowMultiple = true;
+
     this.ResetForm();
     if (e) {
       this.f.DocumentSubTypeId.setValue(e.DocumentSubType);

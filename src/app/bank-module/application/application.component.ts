@@ -152,7 +152,7 @@ export class ApplicationComponent implements OnInit, AfterViewInit, OnDestroy {
       }, {
         title: 'Name',
         data: '', render: (data, type, row) => {
-          return `${row.FirstName} ${row.LastName}`;
+          return `${row.FirstName} ${row.LastName ? row.LastName : ''}`;
 
         }
       }, {
